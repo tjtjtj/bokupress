@@ -1,0 +1,10 @@
+RewriteEngine on
+
+# ファイルが存在する場合、それを使う
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# ディレクトリが存在する場合、それを使う
+# RewriteCond %{REQUEST_FILENAME} !-d
+
+# それ以外は .index.php に転送する
+RewriteRule . index.php

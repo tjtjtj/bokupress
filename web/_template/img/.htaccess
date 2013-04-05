@@ -1,0 +1,8 @@
+RewriteEngine off
+
+# ディレクトリまたはファイルが存在する場合は、それを直接に使う
+##RewriteCond %{REQUEST_FILENAME} !-f
+##RewriteCond %{REQUEST_FILENAME} !-d
+
+# それ以外は not found
+##RewriteRule ^.*$ - [R=404,L]

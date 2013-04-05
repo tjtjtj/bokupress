@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>BOKUPRESS</title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" 
+      tal:attributes="href string:${template_uri}/bootstrap/css/bootstrap.css"
+    />
+    <style type="text/css">
+
+      /* Sticky footer styles
+      -------------------------------------------------- */
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      /*
+      #footer {
+        background-color: #f5f5f5;
+      }
+      */
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 900px;
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+      
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" 
+      tal:attributes="href string:${template_uri}/bootstrap/css/bootstrap-responsive.css"
+    />
+
+
+</head>
+
+<body>
+<div id="wrap">
+
+<!-- Begin page content -->
+<div class="container">
+  <div class="page-head">
+    <img src="img/bokupress_logo.png" alt="logo" 
+      tal:attributes="src string:${template_uri}/img/bokupress_logo.png"
+    /> 
+
+    <ul class="nav nav-pills"
+        tal:condition="exists:navi" >
+      <li class="active"
+          tal:repeat="nav navi" 
+          tal:attributes="class nav/class" >
+          <a href="#" 
+             tal:attributes="href nav/href"
+             tal:content="nav/text" >
+              Home
+          </a>
+      </li>
+      <li tal:replace=""><a href="/navi">ドキュメント</a></li>
+      <li tal:replace=""><a href="/navi">navi</a></li>
+      <li><a href="https://github.com/tjtjtj/bokupress">GitHub project</a></li>
+    </ul>
+
+
+  </div><!-- page-header -->
+
+  <div class="row-fluid">
+    <div class="span9">	
+    
+      <div class="hero-unit" 
+           tal:condition="exists:dir"
+           tal:repeat="child dir">
+        <h1 tal:content="child/title">title</h1>
+        <p tal:content="child/tagline" >taglinetaglinetaglinetagline</p>
+        <p><a href="uri" class="btn btn-primary"
+          tal:attributes="href child/uri">詳細</a></p>
+      </div>
+        
+      <div tal:condition="exists:md"
+           tal:content="structure md" />
+
+      <div tal:replace="" >
+        <h2>Lorem ipsum</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum cursus interdum. Praesent ornare orci laoreet eros viverra venenatis id vitae dui. Cras sem lectus, rutrum sit amet posuere quis, pretium quis augue. Ut pellentesque porta augue, ut ultricies nisi elementum ac. Curabitur tincidunt, neque a laoreet pellentesque, odio leo vulputate nisl, ut eleifend sapien elit ac justo. Vestibulum non tincidunt dui. Etiam vel feugiat odio. Nulla sed lectus id sem posuere porttitor consectetur ac nunc. Donec porta lacus commodo velit luctus elementum.</p>
+        <p>Etiam ornare laoreet mauris sed iaculis. Integer facilisis est in urna dignissim a luctus arcu consequat. Nullam nisl tortor, dictum eget congue sed, faucibus sed nulla. Nulla aliquam feugiat pulvinar. In quis ipsum id justo fermentum lacinia. Aliquam mollis tristique tristique. Nullam condimentum odio nec risus lacinia rhoncus. Maecenas dapibus augue nec mauris ultricies pharetra. Proin adipiscing, lacus sed rutrum fermentum, nibh urna pretium quam, ac elementum nunc ante eget est. Suspendisse potenti. Curabitur nulla nibh, ultrices ut ornare vitae, semper sed turpis. Sed condimentum ultrices orci, eget viverra turpis egestas sed. Aliquam quis libero quis erat tempus laoreet. Pellentesque pharetra, ligula et iaculis porta, magna elit fringilla sem, eget porta felis quam eget diam.</p>
+        <p>Cras congue tincidunt libero sed placerat. Vestibulum in scelerisque magna. Nulla vel enim ut sem malesuada luctus. Ut non tempus nibh. Quisque in nisl sed velit pretium sodales. Proin dictum, arcu ac imperdiet tincidunt, elit quam venenatis libero, eu mattis lectus nisi nec urna. Sed viverra erat at velit pharetra aliquam. Sed diam ligula, placerat a ultricies in, dignissim a libero. Aliquam venenatis convallis turpis, et feugiat neque luctus tristique.</p>
+        <p>Duis est libero, vestibulum eget consectetur ac, mattis nec lectus. Suspendisse rhoncus leo ac turpis hendrerit ultricies. Sed neque justo, commodo eu feugiat nec, aliquet vitae velit. Phasellus ac libero orci. Maecenas ultrices neque et magna ornare tempus. Curabitur pretium consectetur ligula non scelerisque. Nunc mollis sem sed quam ullamcorper dictum. Vestibulum a justo dolor, non imperdiet velit. Morbi ut bibendum sapien. Donec ut porttitor lacus. Nam at adipiscing risus. Donec adipiscing suscipit nisi nec pharetra.</p>
+      </div>
+
+      <div class="hero-unit" tal:replace="">
+        <h2>ようこそ</h2>
+        <p>BokuPress(ボクプレス)は、オープンソースのブログ/CMS プラットフォームです。ポータブルさ、デザインの簡単さ、運用のお手軽さなどを意識して開発されており、無料でダウンロードして使うことができます。</p>
+        <p><a class="btn btn-info" href="#">View details &raquo;</a></p>
+      </div>
+
+      <div class="hero-unit" tal:replace="">
+        <h2>BorkuPressの特徴</h2>
+        <p>Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+        <p><a class="btn btn-info" href="#">View details &raquo;</a></p>
+      </div>
+
+      <div class="hero-unit" tal:replace="">
+        <h2>インストール</h2>
+        <p>Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+        <p><a class="btn btn-info" href="#">View details &raquo;</a></p>
+      </div>
+
+    </div>
+    
+    <div class="span3"><!-- sidebar -->
+      <ul class="nav nav-list">
+        <li class="nav-header">Download</li>
+        <li class=""><a href="#">bokupress_0.0.1.zip</a></li>
+      </ul>
+      <ul class="nav nav-list">
+        <li class="nav-header">Recent Entry</li>
+        <li><a href="docs/wellcome">ようこそ</a></li>
+        <li><a href="docs/features">BorkuPressの特徴</a></li>
+        <li><a href="docs/install">インストール</a></li>
+      </ul>
+    </div><!-- sidebar -->
+
+  </div>
+
+</div><!-- container -->
+
+<div id="push"></div>
+</div><!-- wrap -->
+
+<div id="footer">
+  <div class="container">
+    <p class="muted credit">Copyright &copy; 2013 by My Company. All Rights Reserved. Powered by <a href="https://github.com/tjtjtj/bokupress">BokuPress</a>.</p>
+  </div>
+</div>
+
+</body>
+</html>

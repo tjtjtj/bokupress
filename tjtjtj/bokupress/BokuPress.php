@@ -45,41 +45,60 @@ class BokuPress
         $response->send();
     }
 
-    /**
+    public static function app()
+    {
+        return self::$app;
+    }
+
+        /**
      * リソース解決
      * 
      * @param Resource $resource
      */
     public static function resolveResource($request)
     {
-        $resource = null;
-        
         if ($request instanceof Request) {
             $resource = new Resource();
             $resource->uri = $request->getRequestUri();
-            $path = self::$app->c['base_dir'].$request->getRequestUri();
-            $rpath = realpath($path);
+            $resource->filepath = self::getPathFormUri($request->getRequestUri());
+            return $resource;
 
-            if ($rpath) {
-                $resource->filepath = $rpath;
-            } else {
-                foreach (glob($path.'.*') as $filename ) {
-                    $resource->filepath = $filename;
-                    //$resource->filepath = pathinfo($filename, PATHINFO_FILENAME);
-                    break;
-                }
-            }
         } else if (file_exists($request)) {
+
             $resource = new Resource();
             $resource->filepath = $request;
-            $resource->uri = str_replace(self::$app->c['home_dir'], self::$app->c['home_uri'], $request);
-            $resource->uri = rtrim($resource->uri, pathinfo($request, PATHINFO_EXTENSION));
-            $resource->uri = rtrim($resource->uri, '.');
+            $resource->uri = self::getUriFormPath($request);
+            return $resource;
+
         }
-        
-        return $resource;
+        return null;
     }
 
+    public static function getPathFormUri($uri)
+    {
+        $u = ltrim($uri, self::app()->c['home_uri']);
+        $path = self::app()->c['home_dir'].'/'.$u;
+        $rpath = realpath($path);
+
+        if ($rpath) {
+            return $rpath;
+        } else {
+            foreach (glob($path.'.*') as $filename ) {
+                return $filename;
+            }
+        }
+        return null;
+    }
+
+    public static function getUriFormPath($path)
+    {
+        $uri = str_replace(self::app()->c['home_dir'], self::app()->c['home_uri'], $path);
+        $uri = str_replace('//', '/', $uri);
+        $uri = rtrim($uri, pathinfo($path, PATHINFO_EXTENSION));
+        $uri = rtrim($uri, '.');
+        return $uri;
+    }
+    
     /**
      * 
      * @param Resource $resource
@@ -105,4 +124,3 @@ class BokuPress
         return $renderer->render($resource);
     }
 }
-

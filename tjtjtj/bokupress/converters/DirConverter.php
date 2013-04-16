@@ -3,6 +3,7 @@ namespace tjtjtj\bokupress\converters;
 
 use tjtjtj\bokupress\Resource;
 use tjtjtj\bokupress\MarkdownUtils;
+use dflydev\markdown\IMarkdownParser;
 
 /**
  * Description of DirConverter
@@ -11,6 +12,20 @@ use tjtjtj\bokupress\MarkdownUtils;
  */
 class DirConverter extends AbstractConverter
 {
+    protected $file = 'index.md';
+    protected $key = 'md';
+
+    /**
+     *
+     * @var IMarkdownParser 
+     */
+    protected $parser;
+
+    public function __construct(IMarkdownParser $parser)
+    {
+        $this->parser = $parser;
+    }
+
     /**
      * 
      * @param Resource $resource
@@ -28,18 +43,24 @@ class DirConverter extends AbstractConverter
      */
     public function doConvert($resource) 
     {
-        $children = array();
-        foreach ($resource->getChildren() as $res) {
-            $contents = $res->getFileContents();
-            $title = $this->getTitle($contents);
-            $tagline = $this->getTagline($contents);
-            $children[] = array(
-                'title'=>$title,
-                'tagline'=>$tagline,
-                'uri'=>$res->uri,
+        foreach($resource->getChildren("index.md") as $res) {
+            $this->key = "md";
+            return $this->parser->transformMarkdown($res->getFileContents());
+        }
+
+        $this->key = "dir";
+        $ret = array();
+        foreach ($resource->getChildren() as $child) {
+            $contents = $child->getFileContents();
+            //$title = 
+            //$tagline = 
+            $ret[] = array(
+                'title'=>MarkdownUtils::getTitle($contents),
+                'tagline'=>MarkdownUtils::getTagline($contents),
+                'uri'=>$child->uri,
             );
         }
-        return $children;
+        return $ret;
     }
 
     /**
@@ -47,7 +68,7 @@ class DirConverter extends AbstractConverter
      */
     protected function getKey()
     {
-        return 'dir';
+        return $this->key;
     }
     
     public function getTitle($contents)
@@ -58,6 +79,4 @@ class DirConverter extends AbstractConverter
     {
         return MarkdownUtils::getTagline($contents);
     }
-
-
 }

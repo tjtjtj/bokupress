@@ -92,7 +92,7 @@
       </li>
       <li tal:replace=""><a href="/navi">ドキュメント</a></li>
       <li tal:replace=""><a href="/navi">navi</a></li>
-      <li><a href="https://github.com/tjtjtj/bokupress">GitHub project</a></li>
+      <li><a href="https://github.com/tjtjtj/bokupress">source</a></li>
     </ul>
 
 
@@ -111,7 +111,8 @@
       </div>
         
       <div tal:condition="exists:md"
-           tal:content="structure md" />
+           tal:content="structure md">
+      </div>
 
       <div tal:replace="" >
         <h2>Lorem ipsum</h2>
@@ -148,9 +149,9 @@
       </ul>
       <ul class="nav nav-list">
         <li class="nav-header">Recent Entry</li>
-        <li><a href="docs/wellcome">ようこそ</a></li>
-        <li><a href="docs/features">BorkuPressの特徴</a></li>
-        <li><a href="docs/install">インストール</a></li>
+        <li><a href="/docs/wellcome">ようこそ</a></li>
+        <li><a href="/docs/features">BorkuPressの特徴</a></li>
+        <li><a href="/docs/install">インストール</a></li>
       </ul>
     </div><!-- sidebar -->
 

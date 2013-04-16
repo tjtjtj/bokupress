@@ -1,8 +1,6 @@
 <?php
 
 return array(
-    'app_dir'=>__DIR__,
-    
     // Converters
     'converters'=>array(
         'MarkdownConverter',
@@ -13,9 +11,8 @@ return array(
     // Renderer
     'renderer'=>function($container) {
         $r = new tjtjtj\bokupress\PhptalRenderder();
-        $r->template = 'C:\xampp\htdocs\BokuPress\web\_template\index.html';
-        $r->templateUri = '/bokupress/web/_template';
-        $r->title = "title!!!";
+        $r->template = $container['template_dir'].'/index.html';
+        $r->templateUri = $container['template_uri'];
         return $r;
     },
 
@@ -26,8 +23,8 @@ return array(
     'MarkdownConverter'=>function($container) {
         return new tjtjtj\bokupress\converters\MarkdownConverter($container['MarkdownParser']);
     },
-    'DirConverter'=>function() {
-        return new tjtjtj\bokupress\converters\DirConverter();
+    'DirConverter'=>function($container) {
+        return new tjtjtj\bokupress\converters\DirConverter($container['MarkdownParser']);
     },
     'NaviConverter'=>function() {
         return new tjtjtj\bokupress\converters\NaviConverter();

@@ -1,11 +1,6 @@
 Lorem ipsum
 ===========
 
-Lorem ipsum
------------
-
-### Lorem ipsum
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum
 cursus interdum. Praesent ornare orci laoreet eros viverra venenatis id vitae dui. 
 Cras sem lectus, rutrum sit amet posuere quis, pretium quis augue. Ut pellentesque

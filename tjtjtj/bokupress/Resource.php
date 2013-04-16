@@ -105,9 +105,7 @@ class Resource implements \ArrayAccess
         }
         
         $ret = array();
-
         foreach (glob($this->filepath.'/'.$pattern, $flags) as $filename ) {
-            
             $pathinfo = pathinfo($filename);
             if (isset($pathinfo['extension']) && $pathinfo['extension'] === 'php') {
                 continue;
@@ -116,8 +114,7 @@ class Resource implements \ArrayAccess
                 continue;
             }
             
-            $item = BokuPress::resolveResource($filename);
-            $ret[]=$item;
+            $ret[]=BokuPress::resolveResource($filename);
         }
         return $ret;
     }

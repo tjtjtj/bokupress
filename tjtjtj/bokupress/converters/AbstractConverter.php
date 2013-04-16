@@ -16,7 +16,9 @@ abstract class AbstractConverter
     public function convert($resource)
     {
         if ($this->doFilter($resource)) {
-            $resource[$this->getKey()] = $this->doConvert($resource);
+            $values = $this->doConvert($resource);
+            $key = $this->getKey();
+            $resource[$key] = $values;
         }
     }
     

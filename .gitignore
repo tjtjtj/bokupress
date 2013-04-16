@@ -1,4 +1,5 @@
-/composer.lock
-/composer.phar
+composer.lock
+composer.phar
 /vendor/
-/nbproject
+/bokusample/_fineproduct/
+/bokusample/_watchthis

@@ -1,5 +1,7 @@
 composer.lock
 composer.phar
 /vendor/
-/bokusample/_fineproduct/
+/nbproject/
+/bokusample/_template/.LC*
 /bokusample/_watchthis
+/bokusample/_fineproduct/

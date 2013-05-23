@@ -6,10 +6,9 @@
         "symfony/class-loader": "2.3.*@dev",
         "pimple/pimple": "dev-master",
         "dflydev/markdown": "1.0.x-dev",
-        "phptal/phptal": "dev-master",
-        "phpunit/phpunit": "3.7.*"
+        "phptal/phptal": "dev-master"
     },
    "autoload": {
-     "psr-0": {"tjtjtj\\bokupress": ""}
+     "psr-0": {"bokupress": "src/"}
    }
 }

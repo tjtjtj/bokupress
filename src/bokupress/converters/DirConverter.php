@@ -1,8 +1,8 @@
 <?php
-namespace tjtjtj\bokupress\converters;
+namespace bokupress\converters;
 
-use tjtjtj\bokupress\Resource;
-use tjtjtj\bokupress\MarkdownUtils;
+use bokupress\Resource;
+use bokupress\MarkdownUtils;
 use dflydev\markdown\IMarkdownParser;
 
 /**
@@ -45,6 +45,11 @@ class DirConverter extends AbstractConverter
     {
         foreach($resource->getChildren("index.md") as $res) {
             $this->key = "md";
+
+            //$ret = $this->parser->transformMarkdown($res->getFileContents());
+            //return $ret;
+
+
             return $this->parser->transformMarkdown($res->getFileContents());
         }
 

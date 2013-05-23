@@ -1,5 +1,5 @@
 <?php
-namespace tjtjtj\bokupress\converters;
+namespace bokupress\converters;
 
 /**
  * Description of AbstractConverter

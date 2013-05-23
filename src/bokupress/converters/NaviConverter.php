@@ -1,9 +1,9 @@
 <?php
-namespace tjtjtj\bokupress\converters;
+namespace bokupress\converters;
 
-use tjtjtj\bokupress\BokuPress;
-use tjtjtj\bokupress\Resource;
-use tjtjtj\bokupress\StringUtils;
+use bokupress\BokuPress;
+use bokupress\Resource;
+use bokupress\StringUtils;
 
 /**
  * Description of NaviConverter
@@ -33,17 +33,17 @@ class NaviConverter extends AbstractConverter
             'class' => ($resource->uri === BokuPress::app()->c['home_uri']
                         || $resource->uri === BokuPress::app()->c['home_uri'].'/'
                         || $resource->uri === BokuPress::app()->c['home_uri'].'/index')
-                            ? 'current' 
+                            ? 'active' 
                             : '',
         );
         
         $dir = new Resource();
         $dir->filepath = BokuPress::app()->c['home_dir'];
-        foreach ($dir->getChildren("*", GLOB_ONLYDIR) as $dir) {
+        foreach ($dir->getChildren("*", GLOB_ONLYDIR) as $d) {
             $navis[] = array(
-                'href'=>$dir->uri,
-                'text'=>$dir->getFilename(),
-                'class' => (StringUtils::startsWith($resource->uri, $dir->uri))
+                'href'=>$d->uri,
+                'text'=>$d->getFilename(),
+                'class' => (StringUtils::startsWith($resource->uri, $d->uri))
                             ? 'active' 
                             : '',
             );

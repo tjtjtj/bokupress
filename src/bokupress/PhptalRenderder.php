@@ -1,5 +1,5 @@
 <?php
-namespace tjtjtj\bokupress;
+namespace bokupress;
 
 use \PHPTAL;
 

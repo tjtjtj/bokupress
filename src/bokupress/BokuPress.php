@@ -1,8 +1,9 @@
 <?php
-namespace tjtjtj\bokupress;
+namespace bokupress;
 
 require_once realpath(dirname(dirname(__DIR__)).'/vendor/autoload.php');
 
+use bokupress\Resource;
 use \Symfony\Component\HttpFoundation\Request;
 use \Symfony\Component\HttpFoundation\Response;
 use \Pimple;

@@ -1,7 +1,7 @@
 <?php
-namespace tjtjtj\bokupress;
+namespace bokupress;
 
-use tjtjtj\bokupress\StringUtils;
+use bokupress\StringUtils;
 
 /**
  * Resource
@@ -19,11 +19,11 @@ class Resource implements \ArrayAccess
         $this->values = $values;
     }
     
-    public function dump()
-    {
-        var_dump($this->values);
-        echo "<br>";
-    }
+//    public function dump()
+//    {
+//        var_dump($this->values);
+//        echo "<br>";
+//    }
     
     public function offsetSet($id, $value)
     {

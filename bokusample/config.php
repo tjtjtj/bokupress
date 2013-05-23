@@ -10,7 +10,7 @@ return array(
             
     // Renderer
     'renderer'=>function($container) {
-        $r = new tjtjtj\bokupress\PhptalRenderder();
+        $r = new bokupress\PhptalRenderder();
         $r->template = $container['template_dir'].'/index.html';
         $r->templateUri = $container['template_uri'];
         return $r;
@@ -21,13 +21,13 @@ return array(
         return new dflydev\markdown\MarkdownExtraParser();
     },
     'MarkdownConverter'=>function($container) {
-        return new tjtjtj\bokupress\converters\MarkdownConverter($container['MarkdownParser']);
+        return new bokupress\converters\MarkdownConverter($container['MarkdownParser']);
     },
     'DirConverter'=>function($container) {
-        return new tjtjtj\bokupress\converters\DirConverter($container['MarkdownParser']);
+        return new bokupress\converters\DirConverter($container['MarkdownParser']);
     },
     'NaviConverter'=>function() {
-        return new tjtjtj\bokupress\converters\NaviConverter();
+        return new bokupress\converters\NaviConverter();
     },
     
 );

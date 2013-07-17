@@ -1,14 +1,11 @@
 {
     "require": {
         "symfony/http-foundation": "2.2.x-dev",
-        "symfony/routing": "2.1.x-dev",
-        "symfony/config": "2.2.x-dev",
-        "symfony/class-loader": "2.3.*@dev",
         "pimple/pimple": "dev-master",
         "dflydev/markdown": "1.0.x-dev",
         "phptal/phptal": "dev-master"
     },
    "autoload": {
-     "psr-0": {"bokupress": "src/"}
+     "psr-0": {"bokupress": "."}
    }
 }

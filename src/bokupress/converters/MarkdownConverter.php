@@ -49,5 +49,4 @@ class MarkdownConverter extends AbstractConverter
     {
         return 'md';
     }
-    
 }
